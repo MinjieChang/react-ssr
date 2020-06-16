@@ -6,6 +6,7 @@ import React from 'react'
 
 export const render = (req) => {
   //构建服务端的路由
+  // const content = renderToString(React.createElement(StaticRouter, {location: req.path}, Routes));
   const content = renderToString(
     <StaticRouter location={req.path} >
       {Routes}

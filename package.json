@@ -27,7 +27,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "ssr": "nodemon server/index.js",
+    "ssr": "nodemon --exec babel-node server/index.js",
     "dev": "npm-run-all --parallel dev:**",
     "dev:start": "nodemon --watch build --exec node \"./build/bundle.js\"",
     "dev:build:server": "webpack --config webpack.server.js --watch",
