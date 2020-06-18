@@ -13,9 +13,16 @@ const app = express()
 
 app.use(express.static('dist'));
 
-app.use('*', function(req, res, ctx) {
+app.get('/api/list', function(req, res, next) {
+  res.json({
+    data: [11,22,33]
+  })
+})
+
+app.use('*', function(req, res, next) {
   res.send(render(req))
 })
+
 
 // const content = renderToString(React.createElement(Home));
 
