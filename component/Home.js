@@ -21,12 +21,20 @@ import Page from './Page';
 //   )
 // }
 
-class Home extends React.Component{
-  componentDidMount(){
-    console.log('componentDidMount')
-    this.props.getHomeList()
+class Home extends React.Component {
+
+  // 预加载数据，服务端调用
+  static async loadData(store, match) {
+    // 参数 match 是当前匹配路由的信息
+    return store.dispatch(getHomeList())
   }
-  render(){
+
+  componentDidMount() {
+    console.log('componentDidMount')
+    // this.props.getHomeList()
+  }
+
+  render() {
     const props = this.props;
     return (
       <div>

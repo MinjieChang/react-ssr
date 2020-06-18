@@ -24,7 +24,8 @@ export const routes = [
       {
         path: "/home",
         exact: true,
-        component: Home
+        component: Home,
+        loadData: Home.loadData,//服务端获取异步数据的函数
       },
       {
         path: "/login",

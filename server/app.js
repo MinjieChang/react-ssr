@@ -20,7 +20,9 @@ app.get('/api/list', function(req, res, next) {
 })
 
 app.use('*', function(req, res, next) {
-  res.send(render(req))
+  if(req.baseUrl === '/favicon.ico') return res.end()
+  // res.send(render(req))
+  render(req, res)
 })
 
 
