@@ -30,8 +30,10 @@ class Home extends React.Component {
   }
 
   componentDidMount() {
-    console.log('componentDidMount')
-    // this.props.getHomeList()
+    // 服务端已经往store中注入数据，这里不需要重复请求
+    if(!this.props.home.list.length) {
+      this.props.getHomeList()
+    }
   }
 
   render() {

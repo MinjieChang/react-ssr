@@ -10,6 +10,12 @@ const reducer = combineReducers({
 
 //导出创建的store
 // 导出函数的目的是，在服务端渲染时，保证每个用户请求得到是不同的store
-export default () => {
+export const getServerStore = () => {
   return createStore(reducer, applyMiddleware(thunk))
+}
+
+// 服务端不支持 window，所以这里要区分服务端和客户端的方法
+export const getClientStore = () => {
+  const initialState = window.initialState ? window.initialState : {};
+  return createStore(reducer, initialState, applyMiddleware(thunk))
 }

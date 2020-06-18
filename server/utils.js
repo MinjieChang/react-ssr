@@ -5,12 +5,13 @@ import { renderToString } from 'react-dom/server';
 import { matchRoutes } from "react-router-config";
 
 import Routes, { routes } from '../router';
-import getStore from '../store'
+import { getServerStore } from "../store";
 
 // 改造这里 服务端做数据预取
 const loadBranchData = (pathname, store) => {
   const branch = matchRoutes(routes, pathname)
 
+// warning: 这里route.loadData 需要错误捕获
   const promises = branch.map(({ route, match }) => {
     return route.loadData
       ? route.loadData(store, match) // 把store 和 match 传入数据预取函数
@@ -21,7 +22,7 @@ const loadBranchData = (pathname, store) => {
 }
 
 export const render = (req, res) => {
-  const store = getStore();
+  const store = getServerStore();
   // console.log(req.baseUrl, 'req.baseUrl')
 
   // 加载完数据后，再把组件生成字符串返回，现在返回的组件都是有数据的结果
@@ -43,6 +44,10 @@ export const render = (req, res) => {
         <StaticRouter location={req.baseUrl}>{Routes}</StaticRouter>
       </Provider>
     );
+    // 数据注水
+    const hydrate = `
+      window.initialState = ${JSON.stringify(store.getState())};
+    `
     return `
       <html>
         <head>
@@ -50,6 +55,10 @@ export const render = (req, res) => {
         </head>
         <body>
           <div id="root">${content}</div>
+          <script>
+            // Warning 这个script一定不能放到后面，它必须在客户端代码执行之前注水数据
+            ${hydrate}
+          </script>
           <script src="/index.js"></script>
         </body>
       </html>
