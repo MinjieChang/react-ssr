@@ -30,6 +30,15 @@ class Home extends React.Component {
     return store.dispatch(getHomeList())
   }
 
+  // 在这个生命周期里加上css逻辑
+  componentWillMount(){
+    // 通过这个属性可以判断是在服务端调用
+    if(this.props.staticContext) {
+      // 给服务端注入的变量 staticContext 的 css属性中加入 css文本
+      this.props.staticContext.css.push(styles._getCss());
+    }
+  }
+
   componentDidMount() {
     // 服务端已经往store中注入数据，这里不需要重复请求
     if(!this.props.home.list.length) {
