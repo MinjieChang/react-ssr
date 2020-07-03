@@ -58,6 +58,10 @@
     "@babel/node": "^7.10.1",
     "@babel/plugin-transform-runtime": "^7.10.1",
     "babel-loader": "^8.1.0",
-    "webpack-cli": "^3.3.11"
+    "css-loader": "^3.6.0",
+    "isomorphic-style-loader": "^5.1.0",
+    "style-loader": "^1.2.1",
+    "webpack-cli": "^3.3.11",
+    "webpack-node-externals": "^1.7.2"
   }
 }

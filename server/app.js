@@ -4,7 +4,7 @@ const express = require('express');
 
 const { render } = require('./utils');
 
-require("node-jsx").install()
+// require("node-jsx").install()
 
 
 // const Home =  require('../component/Home');

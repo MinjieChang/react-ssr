@@ -9,6 +9,17 @@ const clientConfig = {
     filename: 'index.js',
     path: path.resolve(__dirname, 'dist')
   },
+  module: {
+    rules: [
+      {
+        test: /\.css/,
+        use: ['style-loader', {
+          loader: 'css-loader',
+          options: { modules: true }
+        }],
+      }
+    ],
+  }
 }
 
 module.exports = merge(config, clientConfig);
