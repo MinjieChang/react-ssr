@@ -1,5 +1,5 @@
-const React = require('react');
-
+import styles from './Login.css';
+import React from 'react';
 
 const Login = () => {
   return (
@@ -9,4 +9,4 @@ const Login = () => {
   )
 }
 
-module.exports = Login;
+export default Login;

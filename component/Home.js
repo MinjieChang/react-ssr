@@ -33,7 +33,7 @@ class Home extends React.Component {
   // 在这个生命周期里加上css逻辑
   componentWillMount(){
     // 通过这个属性可以判断是在服务端调用
-    if(this.props.staticContext) {
+    if(this.props.staticContext && this.props.staticContext.css) {
       // 给服务端注入的变量 staticContext 的 css属性中加入 css文本
       this.props.staticContext.css.push(styles._getCss());
     }
@@ -53,7 +53,7 @@ class Home extends React.Component {
         <div className={styles.title}>This is home</div>
         <div> {!!props.home.list.length && props.home.list.map(item => <div key={item}>{item}</div>)} </div>
         <button onClick={() => props.getHomeList()}>click me</button>
-        <div><button onClick={() => alert('hhhhhh')}>alert</button></div>
+        <div><button className={styles.alertMe} onClick={() => alert('hhhhhh')}>alert</button></div>
         <Page></Page>
       </div>
     )

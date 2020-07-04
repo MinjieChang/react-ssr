@@ -15,7 +15,15 @@ const clientConfig = {
         test: /\.css/,
         use: ['style-loader', {
           loader: 'css-loader',
-          options: { modules: true }
+          options: {
+            modules: {
+              mode: 'local',
+              exportGlobals: true,
+              localIdentName: '[path][name]__[local]--[hash:base64:5]',
+              hashPrefix: 'my-custom-hash',
+            },
+            localsConvention: 'camelCase',
+          }
         }],
       }
     ],

@@ -3,7 +3,7 @@
 
 ### 项目启动
 
-全局安装 nodemon babel-node
+全局安装 nodemon babel-node npm-run-all
 
 ```shell
 npm i -g nodemon babel-node npm-run-all

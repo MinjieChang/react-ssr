@@ -4,3 +4,6 @@
 .box {
   width: 100px;
 }
+.alert-me {
+  color: red;
+}

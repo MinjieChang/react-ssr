@@ -18,7 +18,15 @@ const serverConfig = {
         test: /\.css/,
         use: ['isomorphic-style-loader', { // 注意，在服务端需要使用此loader isomorphic-style-loader
           loader: 'css-loader',
-          options: { modules: true }
+          options: { 
+            modules: {
+              mode: 'local',
+              exportGlobals: true,
+              localIdentName: '[path][name]__[local]--[hash:base64:5]',
+              hashPrefix: 'my-custom-hash',
+            },
+            localsConvention: 'camelCase',
+          }
         }],
       }
     ],
