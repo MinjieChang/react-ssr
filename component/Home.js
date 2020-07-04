@@ -1,7 +1,9 @@
 import { connect } from 'react-redux';
+import { compose } from 'redux';
 import { getHomeList } from '../store/home/actions'
 import React, { useEffect } from "react";
 import Page from './Page';
+import withStyle from '../hoc/withStyle'
 import styles from './Home.css';
 
 // console.log(styles._getCss(), 'styles')
@@ -28,15 +30,6 @@ class Home extends React.Component {
   static async loadData(store, match) {
     // 参数 match 是当前匹配路由的信息
     return store.dispatch(getHomeList())
-  }
-
-  // 在这个生命周期里加上css逻辑
-  componentWillMount(){
-    // 通过这个属性可以判断是在服务端调用
-    if(this.props.staticContext && this.props.staticContext.css) {
-      // 给服务端注入的变量 staticContext 的 css属性中加入 css文本
-      this.props.staticContext.css.push(styles._getCss());
-    }
   }
 
   componentDidMount() {
@@ -66,6 +59,7 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, {
-  getHomeList
-})(Home)
+export default compose(
+  connect(mapStateToProps, {getHomeList}),
+  withStyle(styles)
+)(Home)
