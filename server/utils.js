@@ -4,8 +4,8 @@ import { StaticRouter } from 'react-router-dom';
 import { renderToString } from 'react-dom/server';
 import { matchRoutes } from "react-router-config";
 
-import Routes, { routes } from '../router';
-import { getServerStore } from "../store";
+import Routes, { routes } from '../client/router';
+import { getServerStore } from "../client/store";
 
 // 改造这里 服务端做数据预取
 const loadBranchData = (pathname, store) => {
@@ -30,7 +30,8 @@ export const render = (req, res) => {
     // 到这里所有的数据预加载完毕
     const string = getRenderString()
     res.send(string);
-  }).catch(() => {
+  }).catch((_err) => {
+    console.log(_err)
     res.send('loadBranchData_error');
   })
   //构建服务端的路由

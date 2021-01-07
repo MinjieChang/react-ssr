@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 import { Provider } from 'react-redux';
-import { getClientStore } from '../store'
 import { BrowserRouter } from 'react-router-dom'
 
-import Router from '../router'
+import { getClientStore } from './store'
+import Router from './router'
 // import Home from '../component/Home';
 
 const App = () => {

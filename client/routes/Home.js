@@ -1,10 +1,10 @@
+import React, { useEffect } from "react";
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { getHomeList } from '../store/home/actions'
-import React, { useEffect } from "react";
-import Page from './Page';
 import withStyle from '../hoc/withStyle'
 import styles from './Home.css';
+import Page from './Page';
 
 // console.log(styles._getCss(), 'styles')
 // const Home = (props) => {

@@ -1,6 +1,5 @@
 const React = require('react');
 
-
 const Page = () => {
   return (
     <div>
