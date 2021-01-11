@@ -7,7 +7,7 @@ import styles from './Login.css';
 const Login = ({ route }) => {
   return (
     <div>
-      <div>welcome to login<Link to="/login/page">to page</Link></div>
+      <div><Link to="/login/page">to page1</Link></div>
       <div><Link to="/login/pageTwo">to page2</Link></div>
       {renderRoutes(route.routes)}
     </div>

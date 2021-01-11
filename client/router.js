@@ -22,8 +22,9 @@ const Root = ({ route, ...rest }) => {
       <div>
         <Link to="/login">login</Link>
       </div>
-      <div>这里放面包屑
-        <BreadCrumbs breadcrumbs={breadcrumbs}></BreadCrumbs>
+      <div style={{margin: '20px 0'}}>
+        <div>面包屑：</div>
+        <BreadCrumbs breadcrumbs={breadcrumbs} location={location}></BreadCrumbs>
       </div>
       {renderRoutes(route.routes)}
     </div>
@@ -44,18 +45,18 @@ export const routes = [
         loadData: Home.loadData,//服务端获取异步数据的函数
       },
       {
-        breadcrumb: 'home-login',
+        breadcrumb: 'login',
         path: "/login",
         component: Login,
         routes: [
           {
-            breadcrumb: 'home-login-page',
+            breadcrumb: 'page',
             path: "/login/page",
             component: Page,
             exact: true,
           },
           {
-            breadcrumb: 'home-login-page2',
+            breadcrumb: 'page2',
             path: "/login/pageTwo",
             component: PageTwo,
             exact: true,

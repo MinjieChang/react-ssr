@@ -3,11 +3,15 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const BreadcrumbsComponent = ({ breadcrumbs }) => (
+const BreadcrumbsComponent = ({ breadcrumbs, location: { pathname } }) => (
   <div>
     {breadcrumbs.map((breadcrumb, index) => (
       <span key={breadcrumb.props.path}>
-        <Link to={breadcrumb.props.path}>{breadcrumb}</Link>
+        {pathname === breadcrumb.props.path ? (
+          <span>{breadcrumb}</span>
+        ) : (
+          <Link to={breadcrumb.props.path}>{breadcrumb}</Link>
+        )}
         {index < breadcrumbs.length - 1 && <i> / </i>}
       </span>
     ))}

@@ -35,7 +35,13 @@ export const getBreadcrumbs = ({ flattenRoutes, location }) => {
       // 传递给下一次reduce的路径部分
       return pathSection;
     });
-  return matches;
+    // return [home, ...matches]
+    if(location.pathname === '/') {
+      return matches;
+    } else {
+      let home = getBreadcrumb({flattenRoutes, curSection: '/', pathSection: '/'})
+      return [home, ...matches]
+    }
 };
 
 const getBreadcrumb = ({ flattenRoutes, curSection, pathSection }) => {
@@ -53,7 +59,6 @@ const getBreadcrumb = ({ flattenRoutes, curSection, pathSection }) => {
      */
     return matchPath(pathSection, { path, exact: true });
   });
-  console.log(matchRoute, 'matchRoute======')
   // 返回breadcrumb的值，没有就返回原匹配子路径名
   if (matchRoute) {
     return render({
