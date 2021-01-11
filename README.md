@@ -19,6 +19,31 @@ npm i
 npm run dev
 ```
 
+### 目录结构
+
+`client`文件夹下存放前端内容，`server`文件夹下存放服务端文件
+
+```js
+.
+├── README.md
+├── client
+│   ├── components
+│   ├── hoc
+│   ├── index.js
+│   ├── router.js
+│   ├── routes
+│   ├── store
+│   └── utils
+├── server
+│   ├── app.js
+│   ├── index.js
+│   └── utils.js
+├── src
+├── webpack.base.js
+├── webpack.client.js
+├── webpack.server.js
+└── yarn.lock
+```
 ### 项目实现
 
 该ssr项目目前实现的功能如下：
@@ -28,8 +53,6 @@ npm run dev
 - 引入react-router-config，服务端和客户端可共用
 - 组件内入引入数据预取功能，可定义数据预取静态方法
 - css文件实现服务端渲染 
-
-
 ### 待完善部分
 
 - 组件懒加载
