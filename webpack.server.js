@@ -4,14 +4,15 @@ const nodeExternals = require('webpack-node-externals');
 const config = require('./webpack.base');
 
 const serverConfig = {
-  target: 'node',
+  target: 'node', // in order to ignore built-in modules like path, fs, etc.
   mode: 'development',
   entry: './server/index.js',
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'build')
   },
-  externals: [nodeExternals()], // externals 目的是避免打包node的内置模块 如fs等
+  // 无法处理css样式，导致报错。解决办法，添加 whitelist
+  externals: [nodeExternals({ whitelist: /\.css$/ })], // in order to ignore all modules in node_modules folder
   module: {
     rules: [
       {

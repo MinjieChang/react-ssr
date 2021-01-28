@@ -13,6 +13,7 @@ const clientConfig = {
     rules: [
       {
         test: /\.css/,
+        include: /client/,
         use: ['style-loader', {
           loader: 'css-loader',
           options: {
@@ -24,6 +25,14 @@ const clientConfig = {
             },
             localsConvention: 'camelCase',
           }
+        }],
+      },
+      {
+        test: /\.css/,
+        include: /(mj-design|node_modules)/,
+        use: ['style-loader', {
+          loader: 'css-loader',
+          options: { modules: false }
         }],
       }
     ],
